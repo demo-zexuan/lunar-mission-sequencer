@@ -152,6 +152,27 @@ node scripts/gif.mjs dist/index-light.html --select .lms-stage \
 
 录制脚本用 CDP 驱动无头 Chrome，逐帧调用 `window.__lunar.set(p, { settle: true })` 同步绘制目标帧，再用 ffmpeg 两遍调色板（`palettegen=stats_mode=diff` + `paletteuse=dither=bayer`）合成，画质优先。
 
-## 十一、许可
+## 十一、发布
+
+- 仓库：<https://github.com/demo-zexuan/lunar-mission-sequencer>
+- 线上：<https://lunar-mission-sequencer.pages.dev>（Cloudflare Pages 直接上传 `dist/`）
+
+```sh
+# 本地构建
+npm run build
+
+# 上传 dist/ 到 Cloudflare Pages（项目已建好，直接传新版本）
+export CLOUDFLARE_API_TOKEN=<Pages:Edit 权限的 API Token>
+export CLOUDFLARE_ACCOUNT_ID=0cfd91b077d4af794dfa568eaf4d66ca
+npx wrangler pages deploy dist --project-name=lunar-mission-sequencer --branch=main
+```
+
+> 本机的 DSH 文件沙箱不让 wrangler 写 `~/Library/Preferences/.wrangler`，所以上面这条命令要带上
+> `HOME="$PWD/.tmp/wrangler-home"` 与 `npm_config_cache="$PWD/.tmp/npm-cache"`。
+
+`dist/` 里两个文件都是自包含的：`index.html`（默认暗色）与 `index-light.html`（默认亮色），
+两者都带主题切换按钮。
+
+## 十二、许可
 
 MIT © zexuan.peng
