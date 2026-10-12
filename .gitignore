@@ -1,0 +1,16 @@
+# 构建与录制的中间产物
+.tmp/
+out/.gif-work/
+out/frames-*/
+
+# 复核截图：只保留 README 引用的几张，其余本地看
+shots/*.png
+shots/gifcheck/
+!shots/desktop.png
+!shots/moon.png
+!shots/lines-light.png
+
+# 系统
+.DS_Store
+node_modules/
+*.log
