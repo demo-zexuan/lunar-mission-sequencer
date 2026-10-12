@@ -10,6 +10,9 @@ shots/gifcheck/
 !shots/moon.png
 !shots/lines-light.png
 
+# wrangler 在本机沙箱里落下的状态目录
+.wrangler/
+
 # 系统
 .DS_Store
 node_modules/
